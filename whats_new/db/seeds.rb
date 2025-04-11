@@ -126,59 +126,59 @@ Chat.create!(
 Message.create!(
     chat_id: Chat.first.id, 
     user_id: User.first.id, 
-    body: "Hola, ¿Su lol?"
+    body: "Who wants to play a game?"
 )
 
 Message.create!(
     chat_id: Chat.first.id, 
     user_id: User.second.id,
-    body: "Le caigo"
+    body: "I'm in"
 )
 
 Message.create!(
     chat_id: Chat.second.id, 
     user_id: User.third.id, 
-    body: "¿Listo para la hacer el trabajo?"
+    body: "Are you ready to lose?"
 )
 
 Message.create!(
     chat_id: Chat.second.id, 
     user_id: User.second.id, 
-    body: "Estoy en cola para una ranked."
+    body: "I'm already in queue"
 )
 
 Message.create!(
     chat_id: Chat.third.id, 
     user_id: User.first.id, 
-    body: "¿Dónde está la coca cola?"
+    body: "Where is the coke"
 )
 
 Message.create!(
     chat_id: Chat.third.id, 
     user_id: User.third.id, 
-    body: "Al lado de la caja con el ratón muerto."
+    body: "Easy"
 )
 
 Message.create!(
     chat_id: Chat.first.id, 
     user_id: User.first.id, 
-    body: "Perfecto, gracias."
+    body: "Thaks"
 )
 
 Message.create!(
     chat_id: Chat.second.id, 
     user_id: User.second.id, 
-    body: "Recuerden revisar la línea antes de entrar a la partida."
+    body: "Take a look to the roles in the game."
 )
 
 Message.create!(
     chat_id: Chat.third.id, 
     user_id: User.third.id, 
-    body: "Ya lo revisé, todo bien."
+    body: "They are ok"
 )
 
 Message.create!(
     chat_id: Chat.first.id, 
     user_id: User.second.id, 
-    body: "¡Excelente! a trollear entonces"
+    body: "Nice, we got this"
 )
