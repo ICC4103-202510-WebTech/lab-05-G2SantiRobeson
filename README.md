@@ -1,4 +1,4 @@
-# lab-05 (No pescar fork, lo hice sin querer :c)
+# lab-05
 
 ## Create your first ruby and rails models
 
