@@ -1,0 +1,21 @@
+<h1>
+    <%= @chat.sender_id %>
+</h1>
+<ul>
+    <li>
+        <p>ID: <%= @chat.id %></p>
+    </li>
+    <li>
+        <p>Sender ID: <%= @chat.sender_id %></p>
+    </li>
+    <li>
+        <p>Receiver ID: <%= @chat.receiver_id %></p>
+    </li>
+    <li>
+        <p>Updated at: <%= @chat.updated_at %></p>
+    </li>
+    <li>
+        <p>Created at: <%= @chat.created_at %></p>
+    </li>
+</ul>
+<p><%= link_to 'Back to Chats List', chats_path %></p>
