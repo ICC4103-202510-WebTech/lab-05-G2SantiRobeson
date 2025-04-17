@@ -1,24 +1,38 @@
-<h1>
-    <%= @message.id %>
+<h1 class="text-center display-5 mb-4">
+    Message #<%= @message.id %>
 </h1>
-<ul>
-    <li>
-        <p>ID: <%= @message.id %></p>
+
+<div class="card mx-auto" style="max-width: 500px;">
+  <div class="card-body">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <strong>ID:</strong> 
+        <%= @message.id %>
     </li>
-    <li>
-        <p>Chat ID: <%= @message.chat_id %></p>
+      <li class="list-group-item">
+        <strong>Chat ID:</strong> 
+        <%= @message.chat_id %>
     </li>
-    <li>
-        <p>User ID: <%= @message.user_id %></p>
+      <li class="list-group-item">
+        <strong>User ID:</strong> 
+        <%= @message.user_id %>
     </li>
-    <li>
-        <p>Body: <%= @message.body %></p>
+      <li class="list-group-item">
+        <strong>Body:</strong> 
+        <%= @message.body %>
     </li>
-    <li>
-        <p>Updated at: <%= @message.updated_at %></p>
+      <li class="list-group-item">
+        <strong>Updated at:</strong> 
+        <%= @message.updated_at %>
     </li>
-    <li>
-        <p>Created at: <%= @message.created_at %></p>
+      <li class="list-group-item">
+        <strong>Created at:</strong> 
+        <%= @message.created_at %>
     </li>
-</ul>
-<p><%= link_to 'Back to Messages List', messages_path %></p>
+    </ul>
+  </div>
+</div>
+
+<div class="text-center mt-4">
+  <%= link_to 'Back to Messages List', messages_path, class: 'btn btn-secondary' %>
+</div>

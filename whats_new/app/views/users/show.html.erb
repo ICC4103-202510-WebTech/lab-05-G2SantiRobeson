@@ -1,24 +1,38 @@
-<h1>
+<h1 class="text-center display-5 mb-4">
     <%= @user.first_name %>
 </h1>
-<ul>
-    <li>
-        <p>ID: <%= @user.id %></p>
+
+<div class="card mx-auto" style="max-width: 500px;">
+  <div class="card-body">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <strong>ID:</strong> 
+        <%= @user.id %>
     </li>
-    <li>
-        <p>First Name: <%= @user.first_name %></p>
+      <li class="list-group-item">
+        <strong>First Name:</strong> 
+        <%= @user.first_name %>
     </li>
-    <li>
-        <p>Last Name: <%= @user.last_name %></p>
+      <li class="list-group-item">
+        <strong>Last Name:</strong> 
+        <%= @user.last_name %>
     </li>
-    <li>
-        <p>Email: <%= @user.email %></p>
+      <li class="list-group-item">
+        <strong>Email:</strong> 
+        <%= @user.email %>
     </li>
-    <li>
-        <p>Updated at: <%= @user.updated_at %></p>
+      <li class="list-group-item">
+        <strong>Updated at:</strong> 
+        <%= @user.updated_at %>
     </li>
-    <li>
-        <p>Created at: <%= @user.created_at %></p>
+      <li class="list-group-item">
+        <strong>Created at:</strong> 
+        <%= @user.created_at %>
     </li>
-</ul>
-<p><%= link_to 'Back to Users List', users_path %></p>
+    </ul>
+  </div>
+</div>
+
+<div class="text-center mt-4">
+  <%= link_to 'Back to Users List', users_path, class: 'btn btn-secondary' %>
+</div>
