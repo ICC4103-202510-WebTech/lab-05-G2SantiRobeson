@@ -1,0 +1,38 @@
+<%= form_with model: @chat, local: true, html: { class: "w-50 mx-auto mt-5 p-4 border rounded shadow-sm bg-light" } do |f| %>
+
+  <h2 class="text-center mb-4">New Chat</h2>
+
+   <% if @chat.errors.any? %>
+      <div class="alert alert-danger">
+      <h5>
+        We can not save this chat because of the following reasons:
+      </h5>
+      <ul>
+
+      <% @chat.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+      </div>
+      <% end %>
+    
+  <div class="mb-3">
+    <%= f.label :sender_id, "Sender", class: "form-label" %>
+    <%= f.collection_select :sender_id,
+          @users, :id, ->(u) { "#{u.first_name} #{u.last_name}" }, { prompt: "Select a sender" }, { class: "form-select" } %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :receiver_id, "Receiver", class: "form-label" %>
+    <%= f.collection_select :receiver_id,
+          @users, :id, ->(u) { "#{u.first_name} #{u.last_name}" }, { prompt: "Select a receiver" }, { class: "form-select" } %>
+  </div>
+
+  <div class="d-grid">
+    <%= f.submit "Save", class: "btn btn-primary btn-lg" %>
+  </div>
+  </br>
+  <div class="d-grid">
+  <%= link_to 'Back to Chats List', chats_path, class: 'btn btn-secondary' %>
+  </div>
+<% end %>

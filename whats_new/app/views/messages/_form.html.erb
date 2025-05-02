@@ -1,0 +1,61 @@
+<%= form_with model: @message, local: true,
+      html: { class: "w-50 mx-auto mt-5 p-4 border rounded shadow-sm bg-light" } do |f| %>
+  <h2 class="text-center mb-4">New Message</h2>
+
+  <% if @message.errors.any? %>
+      <div class="alert alert-danger">
+      <h5>
+        We can not save this message because of the following reasons:
+      </h5>
+      <ul>
+
+      <% @message.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+      </div>
+  <% end %>
+    
+  <div class="mb-3">
+    <%= f.label :chat_id, "Chat", class: "form-label" %>
+    <%= f.collection_select(
+          :chat_id,
+          @chats,
+          :id,
+          ->(chat) { 
+            "#{chat.sender.first_name} #{chat.sender.last_name} - " \
+            "#{chat.receiver.first_name} #{chat.receiver.last_name}"
+          },
+          { prompt: "Select a chat" },
+          { class: "form-select" }
+        ) %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :user_id, "Who is sending the message?", class: "form-label" %>
+    <%= f.collection_select(
+          :user_id,
+          @users,
+          :id,
+          ->(u) { "#{u.first_name} #{u.last_name}" },
+          { prompt: "Select a user" },
+          { class: "form-select" }
+        ) %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :body, "Message Body", class: "form-label" %>
+    <%= f.text_area :body,
+          rows: 4,
+          class: "form-control",
+          placeholder: "Write your message here" %>
+  </div>
+
+  <div class="d-grid">
+    <%= f.submit "Save", class: "btn btn-primary btn-lg" %>
+  </div>
+  </br>
+  <div class="d-grid">
+    <%= link_to 'Back to Messages List', messages_path, class: 'btn btn-secondary' %>
+  </div>
+<% end %>
