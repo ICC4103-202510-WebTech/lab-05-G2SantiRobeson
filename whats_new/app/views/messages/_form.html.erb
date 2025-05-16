@@ -1,6 +1,4 @@
-<%= form_with model: @message, local: true,
-      html: { class: "w-50 mx-auto mt-5 p-4 border rounded shadow-sm bg-light" } do |f| %>
-  <h2 class="text-center mb-4">New Message</h2>
+<%= form_with model: @message, local: true, html: { class: "w-50 mx-auto mt-5 p-4 border rounded shadow-sm bg-light" } do |f| %>
 
   <% if @message.errors.any? %>
       <div class="alert alert-danger">

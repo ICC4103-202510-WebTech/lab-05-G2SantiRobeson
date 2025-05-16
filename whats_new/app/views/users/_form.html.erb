@@ -1,7 +1,5 @@
 <%= form_with model: @user, local: true, html: { class: "w-50 mx-auto mt-5 p-4 border rounded shadow-sm bg-light" } do |f| %>
 
-      <h2 class="text-center mb-4">New User</h2>
-
       <% if @user.errors.any? %>
       <div class="alert alert-danger">
       <h5>

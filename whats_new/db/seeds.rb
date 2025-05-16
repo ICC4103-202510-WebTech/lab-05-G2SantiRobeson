@@ -9,176 +9,118 @@
 #   end
 
 
-User.create!(
-  email: "g2caps@lec.com",
-  first_name: "Rassmus",
-  last_name: "Winther"
-)
+#The last db doesnt made any sense
 
-User.create!(
-  email: "g2brokenblade@lec.com",
-  first_name: "Sergen",
-  last_name: "Celik"
-)
+rassmus = User.find_or_create_by!(email: "g2caps@lec.com") do |u|
+  u.first_name = "Rassmus";
+  u.last_name  = "Winther"
+end
 
-User.create!(
-  email: "g2skewmond@lec.com",
-  first_name: "Rudy",
-  last_name: "Semaan"
-)
+sergen = User.find_or_create_by!(email: "g2brokenblade@lec.com") do |u|
+  u.first_name = "Sergen";
+  u.last_name  = "Celik"
+end
 
-User.create!(
-  email: "g2labrov@lec.com",
-  first_name: "Labros",
-  last_name: "Papoutsakis"
-)
+rudy = User.find_or_create_by!(email: "g2skewmond@lec.com") do |u|
+  u.first_name = "Rudy";
+  u.last_name  = "Semaan"
+end
 
-User.create!(
-  email: "g2hanssama@lec.com",
-  first_name: "Steven",
-  last_name: "Liv"
-)
+labros = User.find_or_create_by!(email: "g2labrov@lec.com") do |u|
+  u.first_name = "Labros";
+  u.last_name  = "Papoutsakis"
+end
 
-User.create!(
-  email: "lrbauss@nlc.com",
-  first_name: "Simon",
-  last_name: "Hofverberg"
-)
+steven = User.find_or_create_by!(email: "g2hanssama@lec.com") do |u|
+  u.first_name = "Steven";
+  u.last_name  = "Liv"
+end
 
-User.create!(
-  email: "lrvelja@nlc.com",
-  first_name: "Veljko",
-  last_name: "Camdzic"
-)
+simon = User.find_or_create_by!(email: "lrbauss@nlc.com") do |u|
+  u.first_name = "Simon";   
+  u.last_name  = "Hofverberg"
+end
 
-User.create!(
-  email: "lrnemesis@nlc.com",
-  first_name: "Tim",
-  last_name: "Lipovsek"
-)
+veljko = User.find_or_create_by!(email: "lrvelja@nlc.com") do |u|
+  u.first_name = "Veljko";
+  u.last_name  = "Camdzic"
+end
 
-User.create!(
-  email: "lrcrownie@nlc.com",
-  first_name: "Jus",
-  last_name: "Marusic"
-)
+tim = User.find_or_create_by!(email: "lrnemesis@nlc.com") do |u|
+  u.first_name = "Tim";
+  u.last_name  = "Lipovsek"
+end
 
-User.create!(
-  email: "lrrekkles@nlc.com",
-  first_name: "Carl Martin Erik",
-  last_name: "Larsson"
-)
+jus = User.find_or_create_by!(email: "lrcrownie@nlc.com") do |u|
+  u.first_name = "Jus";
+  u.last_name  = "Marusic"
+end
 
-#-------------------------------------------------------------------
+carl = User.find_or_create_by!(email: "lrrekkles@nlc.com") do |u|
+  u.first_name = "Carl Martin Erik";
+  u.last_name = "Larsson"
+end
 
-Chat.create!(
-  sender_id: User.find_by(first_name: "Jus").id,
-  receiver_id: User.find_by(first_name: "Tim").id
-)
+c1  = Chat.find_or_create_by!(sender_id: jus.id,    receiver_id: tim.id)
+c2  = Chat.find_or_create_by!(sender_id: tim.id,    receiver_id: veljko.id)
+c3  = Chat.find_or_create_by!(sender_id: steven.id, receiver_id: labros.id)
+c4  = Chat.find_or_create_by!(sender_id: rudy.id,   receiver_id: sergen.id)
+c5  = Chat.find_or_create_by!(sender_id: simon.id,  receiver_id: tim.id)
+c6  = Chat.find_or_create_by!(sender_id: carl.id,   receiver_id: rassmus.id)
+c7  = Chat.find_or_create_by!(sender_id: jus.id,    receiver_id: rassmus.id)
+c8  = Chat.find_or_create_by!(sender_id: steven.id, receiver_id: rassmus.id)
+c9  = Chat.find_or_create_by!(sender_id: veljko.id, receiver_id: rassmus.id)
+c10 = Chat.find_or_create_by!(sender_id: carl.id,   receiver_id: tim.id)
 
-Chat.create!(
-  sender_id: User.find_by(first_name: "Tim").id,
-  receiver_id: User.find_by(first_name: "Veljko").id
-)
+Message.find_or_create_by!(chat_id: c1.id,  user_id: c1.sender_id,   body: "Who wants to play a game?")
+Message.find_or_create_by!(chat_id: c1.id,  user_id: c1.receiver_id, body: "I'm in")
+Message.find_or_create_by!(chat_id: c1.id,  user_id: c1.sender_id,   body: "Great, let's start!")
+Message.find_or_create_by!(chat_id: c1.id,  user_id: c1.receiver_id, body: "On my way")
 
-Chat.create!(
-  sender_id: User.find_by(first_name: "Steven").id,
-  receiver_id: User.find_by(first_name: "Labros").id
-)
+Message.find_or_create_by!(chat_id: c2.id,  user_id: c2.sender_id,   body: "Are you ready to lose?")
+Message.find_or_create_by!(chat_id: c2.id,  user_id: c2.receiver_id, body: "Bring it on!")
+Message.find_or_create_by!(chat_id: c2.id,  user_id: c2.sender_id,   body: "Let's queue up.")
+Message.find_or_create_by!(chat_id: c2.id,  user_id: c2.receiver_id, body: "Queueing now")
 
-Chat.create!(
-  sender_id: User.find_by(first_name: "Rudy").id,
-  receiver_id: User.find_by(first_name: "Sergen").id
-)
+Message.find_or_create_by!(chat_id: c3.id,  user_id: c3.sender_id,   body: "Where is the coke?")
+Message.find_or_create_by!(chat_id: c3.id,  user_id: c3.receiver_id, body: "Right here, enjoy!")
+Message.find_or_create_by!(chat_id: c3.id,  user_id: c3.sender_id,   body: "Thanks!")
+Message.find_or_create_by!(chat_id: c3.id,  user_id: c3.receiver_id, body: "No problem")
 
-Chat.create!(
-  sender_id: User.find_by(first_name: "Simon").id,
-  receiver_id: User.find_by(first_name: "Tim").id
-)
+Message.find_or_create_by!(chat_id: c4.id,  user_id: c4.sender_id,   body: "Hey Sergen!")
+Message.find_or_create_by!(chat_id: c4.id,  user_id: c4.receiver_id, body: "What's up, Rudy?")
+Message.find_or_create_by!(chat_id: c4.id,  user_id: c4.sender_id,   body: "All good here.")
+Message.find_or_create_by!(chat_id: c4.id,  user_id: c4.receiver_id, body: "Great to hear")
 
-Chat.create!(
-  sender_id: User.find_by(first_name: "Carl Martin Erik").id,
-  receiver_id: User.find_by(first_name: "Rassmus").id
-)
+Message.find_or_create_by!(chat_id: c5.id,  user_id: c5.sender_id,   body: "Yo Tim!")
+Message.find_or_create_by!(chat_id: c5.id,  user_id: c5.receiver_id, body: "Hey Simon, how are you?")
+Message.find_or_create_by!(chat_id: c5.id,  user_id: c5.sender_id,   body: "All good, you?")
+Message.find_or_create_by!(chat_id: c5.id,  user_id: c5.receiver_id, body: "Same here")
 
-Chat.create!(
-  sender_id: User.find_by(first_name: "Jus").id,
-  receiver_id: User.find_by(first_name: "Rassmus").id
-)
+Message.find_or_create_by!(chat_id: c6.id,  user_id: c6.sender_id,   body: "Greetings, Rassmus.")
+Message.find_or_create_by!(chat_id: c6.id,  user_id: c6.receiver_id, body: "Hello Carl!")
+Message.find_or_create_by!(chat_id: c6.id,  user_id: c6.sender_id,   body: "Ready for the match?")
+Message.find_or_create_by!(chat_id: c6.id,  user_id: c6.receiver_id, body: "Absolutely")
 
-Chat.create!(
-  sender_id: User.find_by(first_name: "Steven").id,
-  receiver_id: User.find_by(first_name: "Rassmus").id
-)
+Message.find_or_create_by!(chat_id: c7.id,  user_id: c7.sender_id,   body: "How have you been?")
+Message.find_or_create_by!(chat_id: c7.id,  user_id: c7.receiver_id, body: "Doing great, thanks!")
+Message.find_or_create_by!(chat_id: c7.id,  user_id: c7.sender_id,   body: "Let's catch up soon.")
+Message.find_or_create_by!(chat_id: c7.id,  user_id: c7.receiver_id, body: "Sure thing")
 
-Chat.create!(
-  sender_id: User.find_by(first_name: "Veljko").id,
-  receiver_id: User.find_by(first_name: "Rassmus").id
-)
+Message.find_or_create_by!(chat_id: c8.id,  user_id: c8.sender_id,   body: "Hey Rassmus, got a sec?")
+Message.find_or_create_by!(chat_id: c8.id,  user_id: c8.receiver_id, body: "Yes, what's up?")
+Message.find_or_create_by!(chat_id: c8.id,  user_id: c8.sender_id,   body: "Check your email.")
+Message.find_or_create_by!(chat_id: c8.id,  user_id: c8.receiver_id, body: "On it")
 
-Chat.create!(
-  sender_id: User.find_by(first_name: "Carl Martin Erik").id,
-  receiver_id: User.find_by(first_name: "Tim").id
-)
+Message.find_or_create_by!(chat_id: c9.id,  user_id: c9.sender_id,   body: "Veljko here.")
+Message.find_or_create_by!(chat_id: c9.id,  user_id: c9.receiver_id, body: "Hi Veljko!")
+Message.find_or_create_by!(chat_id: c9.id,  user_id: c9.sender_id,   body: "Ready for tonight?")
+Message.find_or_create_by!(chat_id: c9.id,  user_id: c9.receiver_id, body: "You bet")
 
-#-------------------------------------------------------------------
+Message.find_or_create_by!(chat_id: c10.id, user_id: c10.sender_id, body: "Carl speaking.")
+Message.find_or_create_by!(chat_id: c10.id, user_id: c10.receiver_id, body: "Tim here.")
+Message.find_or_create_by!(chat_id: c10.id, user_id: c10.sender_id, body: "Game starts in 5.")
+Message.find_or_create_by!(chat_id: c10.id, user_id: c10.receiver_id, body: "Roger that.")
 
-Message.create!(
-    chat_id: Chat.first.id, 
-    user_id: User.first.id, 
-    body: "Who wants to play a game?"
-)
 
-Message.create!(
-    chat_id: Chat.first.id, 
-    user_id: User.second.id,
-    body: "I'm in"
-)
 
-Message.create!(
-    chat_id: Chat.second.id, 
-    user_id: User.third.id, 
-    body: "Are you ready to lose?"
-)
-
-Message.create!(
-    chat_id: Chat.second.id, 
-    user_id: User.second.id, 
-    body: "I'm already in queue"
-)
-
-Message.create!(
-    chat_id: Chat.third.id, 
-    user_id: User.first.id, 
-    body: "Where is the coke"
-)
-
-Message.create!(
-    chat_id: Chat.third.id, 
-    user_id: User.third.id, 
-    body: "Easy"
-)
-
-Message.create!(
-    chat_id: Chat.first.id, 
-    user_id: User.first.id, 
-    body: "Thaks"
-)
-
-Message.create!(
-    chat_id: Chat.second.id, 
-    user_id: User.second.id, 
-    body: "Take a look to the roles in the game."
-)
-
-Message.create!(
-    chat_id: Chat.third.id, 
-    user_id: User.third.id, 
-    body: "They are ok"
-)
-
-Message.create!(
-    chat_id: Chat.first.id, 
-    user_id: User.second.id, 
-    body: "Nice, we got this"
-)

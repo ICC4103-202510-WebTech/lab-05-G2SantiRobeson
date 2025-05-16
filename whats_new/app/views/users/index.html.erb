@@ -20,6 +20,8 @@
       <th>Updated At</th>
       <th>Created At</th>
       <th>Show</th>
+      <th>Edit</th>
+      <th>#Messages</th>
     </tr>
   </thead>
   <tbody>
@@ -32,6 +34,8 @@
         <td><%= user.updated_at %></td>
         <td><%= user.created_at %></td>
         <td><%= link_to 'View', user_path(user), class: 'btn btn-sm btn-outline-primary' %></td>
+        <td><%= link_to 'Edit', edit_user_path(user), class: 'btn btn-sm btn-outline-primary' %></td>
+        <td><%= user.messages.count %></td>
       </tr>
     <% end %>
   </tbody>

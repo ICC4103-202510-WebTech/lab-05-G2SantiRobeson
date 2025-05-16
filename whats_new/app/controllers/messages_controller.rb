@@ -1,6 +1,8 @@
 class MessagesController < ApplicationController
 
   before_action :set_message, only: [:show, :edit, :update]
+  before_action :set_all_chats, only: [:new, :edit]
+  before_action :set_all_users, only: [:new, :edit]
 
   def index
     @messages = Message.all
@@ -11,8 +13,6 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
-    @chats   = Chat.all
-    @users   = User.all
   end
 
   def create
@@ -27,7 +27,6 @@ class MessagesController < ApplicationController
   end
 
   def edit
-    @users = User.all
   end
 
   def update
@@ -39,7 +38,7 @@ class MessagesController < ApplicationController
       render :edit
     end
   end
-  
+
   private
   def message_params
     params.require(:message).permit(:chat_id, :user_id, :body)
@@ -48,4 +47,13 @@ class MessagesController < ApplicationController
   def set_message
     @message = Message.find(params[:id])
   end
+
+  def set_all_chats
+    @chats = Chat.all
+  end
+
+  def set_all_users
+    @users = User.all
+  end
+
 end
