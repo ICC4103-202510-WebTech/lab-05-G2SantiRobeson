@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(message_params)
+    @message = current_user.messages.new(message_params)
     if @message.save
       redirect_to messages_path
     else
@@ -39,7 +39,7 @@ class MessagesController < ApplicationController
 
   private
   def message_params
-    params.require(:message).permit(:chat_id, :user_id, :body)
+    params.require(:message).permit(:chat_id, :body)
   end
 
   def set_message
@@ -54,4 +54,9 @@ class MessagesController < ApplicationController
     @users = User.all
   end
 
-end
+  def set_all_chats
+    @chats = Chat
+      .where(sender_id:   current_user.id)
+      .or(Chat.where(receiver_id: current_user.id))
+    end
+  end

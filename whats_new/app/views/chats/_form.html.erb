@@ -13,12 +13,6 @@
       </ul>
       </div>
       <% end %>
-    
-  <div class="mb-3">
-    <%= f.label :sender_id, "Sender", class: "form-label" %>
-    <%= f.collection_select :sender_id,
-          @users, :id, ->(u) { "#{u.first_name} #{u.last_name}" }, { prompt: "Select a sender" }, { class: "form-select" } %>
-  </div>
 
   <div class="mb-3">
     <%= f.label :receiver_id, "Receiver", class: "form-label" %>
