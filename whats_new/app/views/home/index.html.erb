@@ -1,0 +1,20 @@
+<div class="container py-5 text-center">
+  <h1 class="display-4">
+    <% if user_signed_in? %>
+      ¡Welcome, <%= current_user.first_name.presence || current_user.email %> to WhatsNew!
+    <% else %>
+      Welcome to WhatsNew!
+    <% end %>
+  </h1>
+    <% if !user_signed_in? %>
+    <br>
+  <p class="lead">
+      Click here to log in.<br>
+      <%= link_to "Log In",  new_user_session_path, class: "btn btn-primary btn-lg" %>
+    </p>
+    <p class="lead">
+      Or here to sign up.<br>
+      <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+    </p>
+    <% end %>
+</div>

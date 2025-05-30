@@ -1,18 +1,16 @@
 class MessagesController < ApplicationController
-
-  before_action :set_message, only: [:show, :edit, :update]
+  before_action :authenticate_user!
+  load_and_authorize_resource
   before_action :set_all_chats, only: [:new, :edit]
   before_action :set_all_users, only: [:new, :edit]
 
   def index
-    @messages = Message.all
   end
 
   def show
   end
 
   def new
-    @message = Message.new
   end
 
   def create

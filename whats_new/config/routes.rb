@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root "users#index"
+  get "home/index"
+  devise_for :views
+  devise_for :users
+  #root "users#index"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -13,6 +16,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  root to: "home#index"
   get resources :users
   get resources :chats
   get resources :messages

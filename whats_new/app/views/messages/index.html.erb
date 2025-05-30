@@ -28,8 +28,13 @@
         <td><%= message.body %></td>
         <td><%= message.created_at %></td>
         <td><%= message.updated_at %></td>
-        <td><%= link_to 'View', message_path(message), class: 'btn btn-sm btn-outline-primary' %></td>
-        <td><%= link_to 'Edit', edit_message_path(message), class: 'btn btn-sm btn-outline-primary' %></td>
+        <% if can? :edit, message %>
+          <td><%= link_to 'View', message_path(message), class: 'btn btn-sm btn-outline-primary' %></td>
+          <td><%= link_to 'Edit', edit_message_path(message), class: 'btn btn-sm btn-outline-primary' %></td>
+        <% else %>
+          <td>You can't</td>
+          <td>You can't</td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

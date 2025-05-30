@@ -1,16 +1,15 @@
 class UsersController < ApplicationController
-
+  before_action :authenticate_user!
+  load_and_authorize_resource
   before_action :set_user, only: [:show, :edit, :update]
 
   def index
-    @users = User.all
   end
 
   def show
   end
 
   def new
-    @user = User.new
   end
 
   def create
@@ -35,7 +34,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
 
   def set_user

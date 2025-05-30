@@ -26,8 +26,13 @@
         <td><%= chat.receiver_id %></td>
         <td><%= chat.created_at %></td>
         <td><%= chat.updated_at %></td>
-        <td><%= link_to 'View', chat_path(chat), class: 'btn btn-sm btn-outline-primary' %></td>
-        <td><%= link_to 'Edit', edit_chat_path(chat), class: 'btn btn-sm btn-outline-primary' %></td>
+        <% if can? :edit, chat %>
+          <td><%= link_to 'View', chat_path(chat), class: 'btn btn-sm btn-outline-primary' %></td>
+          <td><%= link_to 'Edit', edit_chat_path(chat), class: 'btn btn-sm btn-outline-primary' %></td>
+        <% else %>
+          <td>You can't</td>
+          <td>You can't</td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
