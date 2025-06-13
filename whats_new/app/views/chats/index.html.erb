@@ -10,8 +10,7 @@
   <thead class="table-dark">
     <tr>
       <th>ID</th>
-      <th>Sender ID</th>
-      <th>Receiver ID</th>
+      <th>Chat with</th>
       <th>Created At</th>
       <th>Updated At</th>
       <th>Show</th>
@@ -22,8 +21,7 @@
     <% @chats.each do |chat| %>
       <tr>
         <td><%= chat.id %></td>
-        <td><%= chat.sender_id %></td>
-        <td><%= chat.receiver_id %></td>
+        <td> <%= chat.other_user(current_user).display_name %></td>
         <td><%= chat.created_at %></td>
         <td><%= chat.updated_at %></td>
         <% if can? :edit, chat %>

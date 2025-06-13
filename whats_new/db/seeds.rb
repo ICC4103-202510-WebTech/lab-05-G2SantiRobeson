@@ -11,74 +11,92 @@
 
 #The last db doesnt made any sense
 
+admin7 = User.find_or_create_by!(email: "admin7@admin.com") do |u|
+  u.first_name = "Admin";
+  u.last_name  = "Seven";
+  u.password = "123456";
+  u.password_confirmation = "123456";
+  u.admin = true
+end
+
 rassmus = User.find_or_create_by!(email: "g2caps@lec.com") do |u|
   u.first_name = "Rassmus";
   u.last_name  = "Winther";
-  u.password = "123456"
-  u.password_confirmation = "123456"
+  u.password = "123456";
+  u.password_confirmation = "123456";
+  u.admin = false
 end
 
 sergen = User.find_or_create_by!(email: "g2brokenblade@lec.com") do |u|
   u.first_name = "Sergen";
   u.last_name  = "Celik";
-  u.password = "123456"
-  u.password_confirmation = "123456"
+  u.password = "123456";
+  u.password_confirmation = "123456";
+  u.admin = false
 end
 
 rudy = User.find_or_create_by!(email: "g2skewmond@lec.com") do |u|
   u.first_name = "Rudy";
   u.last_name  = "Semaan";
-  u.password = "123456"
-  u.password_confirmation = "123456"
+  u.password = "123456";
+  u.password_confirmation = "123456";
+  u.admin = false
 end
 
 labros = User.find_or_create_by!(email: "g2labrov@lec.com") do |u|
   u.first_name = "Labros";
   u.last_name  = "Papoutsakis";
-  u.password = "123456"
-  u.password_confirmation = "123456"
+  u.password = "123456";
+  u.password_confirmation = "123456";
+  u.admin = false
 end
 
 steven = User.find_or_create_by!(email: "g2hanssama@lec.com") do |u|
   u.first_name = "Steven";
   u.last_name  = "Liv";
-  u.password = "123456"
-  u.password_confirmation = "123456"
+  u.password = "123456";
+  u.password_confirmation = "123456";
+  u.admin = false
 end
 
 simon = User.find_or_create_by!(email: "lrbauss@nlc.com") do |u|
   u.first_name = "Simon";   
   u.last_name  = "Hofverberg";
-  u.password = "123456"
-  u.password_confirmation = "123456"
+  u.password = "123456";
+  u.password_confirmation = "123456";
+  u.admin = false
 end
 
 veljko = User.find_or_create_by!(email: "lrvelja@nlc.com") do |u|
   u.first_name = "Veljko";
   u.last_name  = "Camdzic";
-  u.password = "123456"
-  u.password_confirmation = "123456"
+  u.password = "123456";
+  u.password_confirmation = "123456";
+  u.admin = false
 end
 
 tim = User.find_or_create_by!(email: "lrnemesis@nlc.com") do |u|
   u.first_name = "Tim";
   u.last_name  = "Lipovsek";
-  u.password = "123456"
-  u.password_confirmation = "123456"
+  u.password = "123456";
+  u.password_confirmation = "123456";
+  u.admin = false
 end
 
 jus = User.find_or_create_by!(email: "lrcrownie@nlc.com") do |u|
   u.first_name = "Jus";
   u.last_name  = "Marusic";
-  u.password = "123456"
-  u.password_confirmation = "123456"
+  u.password = "123456";
+  u.password_confirmation = "123456";
+  u.admin = false
 end
 
 carl = User.find_or_create_by!(email: "lrrekkles@nlc.com") do |u|
   u.first_name = "Carl Martin Erik";
   u.last_name = "Larsson";
-  u.password = "123456"
-  u.password_confirmation = "123456"
+  u.password = "123456";
+  u.password_confirmation = "123456";
+  u.admin = false
 end
 
 c1  = Chat.find_or_create_by!(sender_id: jus.id,    receiver_id: tim.id)

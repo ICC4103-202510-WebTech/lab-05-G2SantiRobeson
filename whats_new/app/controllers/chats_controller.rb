@@ -4,6 +4,7 @@ class ChatsController < ApplicationController
   before_action :set_chat, only: [:show, :edit, :update]
   
   def index
+    @chats = Chat.mine(current_user)
   end
 
   def show

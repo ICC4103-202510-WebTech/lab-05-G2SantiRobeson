@@ -7,15 +7,22 @@
     <div class="collapse navbar-collapse" id="mainNav">
       <ul class="navbar-nav ms-auto">
         <% if user_signed_in? %>
+          <% if current_user.admin? %>
           <li class="nav-item">
             <%= link_to 'Users', users_path, class: 'nav-link' %>
           </li>
-          <li class="nav-item">
+          <%end%>
+          <!--<li class="nav-item">
             <%= link_to 'Chats', chats_path, class: 'nav-link' %>
           </li>
+          <li>-->
+            <%= link_to "My Inbox", chats_path, class: 'nav-link' %>
+          </li>
+          <% if current_user.admin? %>
           <li class="nav-item">
             <%= link_to 'Messages', messages_path, class: 'nav-link' %>
           </li>
+          <%end%>
           <li class="nav-item">
             <span class="nav-link disabled">Hello, <strong><%= current_user.first_name.presence || current_user.email %></strong></span>
           </li>

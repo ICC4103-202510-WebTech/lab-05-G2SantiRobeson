@@ -18,4 +18,8 @@ class User < ApplicationRecord
   validates :email, presence: { message: 'is always required'}
 
   validates :email, uniqueness: { message: 'already exists in our Data Base'}
+
+  def display_name
+    [first_name, last_name].compact.join(" ")
+  end
 end

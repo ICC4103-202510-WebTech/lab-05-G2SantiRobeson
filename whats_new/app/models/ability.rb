@@ -8,22 +8,26 @@ class Ability
     #
     return unless user
     
-    can :index, User
-    can :show, User, id: user.id
-    can :update, User, id: user.id
+    if user.admin?
+      can :manage, :all
+    else
+      can :index, User
+      can :show, User, id: user.id
+      can :update, User, id: user.id
 
-    can :read, Message
-    can :create, Message
-    can [:update, :destroy], Message, user_id: user.id
+      can :read, Message
+      can :create, Message
+      can [:update, :destroy], Message, user_id: user.id
 
-    can :index, Chat
-    can :show,   Chat do |chat|
-      [chat.sender_id, chat.receiver_id].include?(user.id)
+      can :index, Chat
+      can :show,   Chat do |chat|
+        [chat.sender_id, chat.receiver_id].include?(user.id)
+      end
+      can :create, Chat
+      can [:update, :destroy], Chat do |chat|
+        [chat.sender_id, chat.receiver_id].include?(user.id)
     end
-    can :create, Chat
-    can [:update, :destroy], Chat do |chat|
-      [chat.sender_id, chat.receiver_id].include?(user.id)
-    end
+  end
 
 
     #
